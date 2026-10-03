@@ -8,8 +8,12 @@ app.use(cors());
 app.use(morgan('combined'));
 app.use(express.json());
 
-app.get('/status', (req, res) => {
-  res.send('Hello World!');
+app.post('/register', (req, res) => {
+  console.log('Received registration data:', req.body);
+  res.send({
+        message: `User ${req.body.email} registered successfully`
+    });
 })
+
 
 app.listen(process.env.PORT || 8081)
